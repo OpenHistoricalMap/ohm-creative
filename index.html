@@ -54,10 +54,11 @@
       align-items: center;
       gap: 0.875rem;
       box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
       text-decoration: none;
       color: inherit;
       user-select: none;
+      position: relative;
     }
     .icon-card:hover {
       transform: translateY(-5px);
@@ -65,6 +66,19 @@
     }
     .icon-card:active {
       transform: translateY(-2px);
+    }
+    .icon-card.is-loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .icon-card.is-loading::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.6)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='20' fill='none' stroke='%233a8fa8' stroke-width='5' stroke-dasharray='31.4 94.2'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 25 25' to='360 25 25' dur='0.8s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E")
+        center/32px no-repeat;
     }
 
     .icon-card img {
@@ -100,48 +114,104 @@
 
 <header class="page-header">
   <h1>OHM Logo Concepts</h1>
-  <p>Click any icon to preview it as the OpenHistoricalMap logo and favicon</p>
+  <p>Click any icon to preview it live on openhistoricalmap.org</p>
 </header>
 
 <div class="grid-wrapper">
   <div class="icon-grid" id="grid"></div>
-  <p class="hint">Opens a mockup of openhistoricalmap.org in a new tab with your selected icon applied</p>
+  <p class="hint">Fetches the real OHM site and substitutes your chosen icon as the logo and favicon before opening</p>
 </div>
 
 <script>
   const icons = [
-    { file: '01-hourglass-globe.svg',        name: 'Hourglass Globe',         num: '01' },
+    { file: '01-hourglass-globe.svg',        name: 'Hourglass Globe',          num: '01' },
     { file: '02-hourglass-water-land.svg',   name: 'Hourglass · Water & Land', num: '02' },
-    { file: '03-pyramid-tower.svg',          name: 'Pyramid Tower',           num: '03' },
-    { file: '04-sundial.svg',                name: 'Sundial',                 num: '04' },
-    { file: '05-folded-map.svg',             name: 'Folded Map',              num: '05' },
-    { file: '06-simplification.svg',         name: 'Simplification',          num: '06' },
-    { file: '07-negative-space.svg',         name: 'Negative Space',          num: '07' },
-    { file: '08-map-hourglass-cutout.svg',   name: 'Map · Hourglass Cutout',  num: '08' },
-    { file: '09-map-sundial-cutout.svg',     name: 'Map · Sundial Cutout',    num: '09' },
-    { file: '10-ohm-concept.svg',            name: 'OHM Concept',             num: '10' },
-    { file: '11-ohm-with-border.svg',        name: 'OHM with Border',         num: '11' },
-    { file: '13-square-monster.svg',         name: 'Square Monster',          num: '13' },
-    { file: '14-curved-monster.svg',         name: 'Curved Monster',          num: '14' },
-    { file: '15-curved-monster-water.svg',   name: 'Curved Monster · Water',  num: '15' },
+    { file: '03-pyramid-tower.svg',          name: 'Pyramid Tower',            num: '03' },
+    { file: '04-sundial.svg',                name: 'Sundial',                  num: '04' },
+    { file: '05-folded-map.svg',             name: 'Folded Map',               num: '05' },
+    { file: '06-simplification.svg',         name: 'Simplification',           num: '06' },
+    { file: '07-negative-space.svg',         name: 'Negative Space',           num: '07' },
+    { file: '08-map-hourglass-cutout.svg',   name: 'Map · Hourglass Cutout',   num: '08' },
+    { file: '09-map-sundial-cutout.svg',     name: 'Map · Sundial Cutout',     num: '09' },
+    { file: '10-ohm-concept.svg',            name: 'OHM Concept',              num: '10' },
+    { file: '11-ohm-with-border.svg',        name: 'OHM with Border',          num: '11' },
+    { file: '13-square-monster.svg',         name: 'Square Monster',           num: '13' },
+    { file: '14-curved-monster.svg',         name: 'Curved Monster',           num: '14' },
+    { file: '15-curved-monster-water.svg',   name: 'Curved Monster · Water',   num: '15' },
   ];
 
-  const base = 'designs_wip/icons/';
+  const iconDir = 'designs_wip/icons/';
+  const OHM_URL = 'https://www.openhistoricalmap.org/';
+  // CORS proxy — returns the raw response body of any URL
+  const PROXY   = 'https://api.allorigins.win/raw?url=';
+
+  async function openWithIcon(iconPath, iconName, card) {
+    card.classList.add('is-loading');
+
+    try {
+      // Fetch OHM HTML and the selected SVG in parallel
+      const [ohmRes, svgRes] = await Promise.all([
+        fetch(PROXY + encodeURIComponent(OHM_URL)),
+        fetch(iconPath),
+      ]);
+
+      if (!ohmRes.ok) throw new Error(`proxy ${ohmRes.status}`);
+
+      let html   = await ohmRes.text();
+      const svg  = await svgRes.text();
+
+      // Encode SVG as a data URI so it works from a blob: origin
+      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+
+      // 1. Inject <base> so every relative path resolves against OHM's origin
+      html = html.replace(/(<head[^>]*>)/i,
+        `$1\n<base href="${OHM_URL}">`);
+
+      // 2. Swap the header logo (matches the hashed asset filename OHM uses)
+      html = html.replace(
+        /(<img\b[^>]*\balt="OpenHistoricalMap logo"[^>]*\bsrc=")[^"]*(")/i,
+        `$1${dataUri}$2`
+      );
+      // also cover src-before-alt attribute order
+      html = html.replace(
+        /(<img\b[^>]*\bsrc=")[^"]*ohm_logo[^"]*(")/i,
+        `$1${dataUri}$2`
+      );
+
+      // 3. Replace all favicon / touch-icon links with a single SVG one
+      html = html.replace(/<link[^>]+rel=["'](?:icon|shortcut icon|apple-touch-icon)[^>]*>/gi, '');
+      html = html.replace(/<\/head>/i,
+        `<link rel="icon" type="image/svg+xml" href="${dataUri}">\n</head>`);
+
+      const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
+      window.open(URL.createObjectURL(blob), '_blank');
+
+    } catch (err) {
+      console.warn('Live fetch failed, falling back to static mockup:', err);
+      // Fallback: static OHM mockup with swapped logo
+      window.open(
+        `preview.html?icon=${encodeURIComponent(iconPath)}&name=${encodeURIComponent(iconName)}`,
+        '_blank'
+      );
+    } finally {
+      card.classList.remove('is-loading');
+    }
+  }
+
   const grid = document.getElementById('grid');
 
   icons.forEach(({ file, name, num }) => {
-    const card = document.createElement('a');
+    const iconPath = iconDir + file;
+    const card = document.createElement('div');
     card.className = 'icon-card';
-    card.href = `preview.html?icon=${encodeURIComponent(base + file)}&name=${encodeURIComponent(name)}`;
-    card.target = '_blank';
-    card.rel = 'noopener';
     card.innerHTML = `
-      <img src="${base + file}" alt="${name}" loading="lazy">
+      <img src="${iconPath}" alt="${name}" loading="lazy">
       <div class="icon-label">
         <div class="icon-num">${num}</div>
         ${name}
       </div>
     `;
+    card.addEventListener('click', () => openWithIcon(iconPath, name, card));
     grid.appendChild(card);
   });
 </script>
