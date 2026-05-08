@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OHM Logo Preview · OpenHistoricalMap Creative</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a1a;
+    }
+
+    .page-header {
+      background: #1b3d4a;
+      color: #fff;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    .page-header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .page-header p {
+      margin: 0;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .grid-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .icon-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.5rem 1rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.875rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-decoration: none;
+      color: inherit;
+      user-select: none;
+    }
+    .icon-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.13), 0 0 0 2px #3a8fa8;
+    }
+    .icon-card:active {
+      transform: translateY(-2px);
+    }
+
+    .icon-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .icon-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #555;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .icon-num {
+      font-size: 0.7rem;
+      color: #aaa;
+      margin-bottom: -0.25rem;
+    }
+
+    .hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>OHM Logo Concepts</h1>
+  <p>Click any icon to preview it as the OpenHistoricalMap logo and favicon</p>
+</header>
+
+<div class="grid-wrapper">
+  <div class="icon-grid" id="grid"></div>
+  <p class="hint">Opens a mockup of openhistoricalmap.org in a new tab with your selected icon applied</p>
+</div>
+
+<script>
+  const icons = [
+    { file: '01-hourglass-globe.svg',        name: 'Hourglass Globe',         num: '01' },
+    { file: '02-hourglass-water-land.svg',   name: 'Hourglass · Water & Land', num: '02' },
+    { file: '03-pyramid-tower.svg',          name: 'Pyramid Tower',           num: '03' },
+    { file: '04-sundial.svg',                name: 'Sundial',                 num: '04' },
+    { file: '05-folded-map.svg',             name: 'Folded Map',              num: '05' },
+    { file: '06-simplification.svg',         name: 'Simplification',          num: '06' },
+    { file: '07-negative-space.svg',         name: 'Negative Space',          num: '07' },
+    { file: '08-map-hourglass-cutout.svg',   name: 'Map · Hourglass Cutout',  num: '08' },
+    { file: '09-map-sundial-cutout.svg',     name: 'Map · Sundial Cutout',    num: '09' },
+    { file: '10-ohm-concept.svg',            name: 'OHM Concept',             num: '10' },
+    { file: '11-ohm-with-border.svg',        name: 'OHM with Border',         num: '11' },
+    { file: '13-square-monster.svg',         name: 'Square Monster',          num: '13' },
+    { file: '14-curved-monster.svg',         name: 'Curved Monster',          num: '14' },
+    { file: '15-curved-monster-water.svg',   name: 'Curved Monster · Water',  num: '15' },
+  ];
+
+  const base = 'designs_wip/icons/';
+  const grid = document.getElementById('grid');
+
+  icons.forEach(({ file, name, num }) => {
+    const card = document.createElement('a');
+    card.className = 'icon-card';
+    card.href = `preview.html?icon=${encodeURIComponent(base + file)}&name=${encodeURIComponent(name)}`;
+    card.target = '_blank';
+    card.rel = 'noopener';
+    card.innerHTML = `
+      <img src="${base + file}" alt="${name}" loading="lazy">
+      <div class="icon-label">
+        <div class="icon-num">${num}</div>
+        ${name}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

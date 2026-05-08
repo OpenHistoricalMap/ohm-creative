@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<rect width="200" height="200" fill="#fafafa"/>
+<defs><clipPath id="clip11"><rect x="0" y="0" width="200" height="200"/></clipPath></defs>
+<g clip-path="url(#clip11)">
+<polygon points="86,17.7 134.45,5 182.9,25.3 231.35,5 279.8,17.7 279.8,182.3 231.35,195 182.9,175 134.45,195 86,182.3" fill="#6b9938"/>
+<circle cx="5" cy="100" r="95" fill="#4f7aaa"/>
+<path d="M 50 30 L 150 30 L 150 50 Q 150 70 115 100 Q 150 130 150 150 L 150 170 L 50 170 L 50 150 Q 50 130 85 100 Q 50 70 50 50 Z" fill="#fafafa"/>
+<path d="M 54 34 L 146 34 L 146 49 Q 146 68 111 97 L 111 103 Q 146 132 146 151 L 146 166 L 54 166 L 54 151 Q 54 132 89 103 L 89 97 Q 54 68 54 49 Z" fill="#e07a00"/>
+</g>
+</svg>
