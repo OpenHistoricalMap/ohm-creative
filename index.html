@@ -161,8 +161,16 @@
   const PROXY   = 'https://api.allorigins.win/raw?url=';
   const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/icons';
 
-  // iconPath = header logo SVG; favicoPath = browser tab favicon SVG (may differ)
+  // Open the tab synchronously (before any await) so popup blockers allow it,
+  // then navigate it to the patched OHM page once the fetches complete.
   async function openWithIcon(iconPath, favicoPath, iconName, card) {
+    // Must happen synchronously in the click handler — popup blockers reject
+    // window.open calls made after an await.
+    const newTab = window.open('', '_blank');
+    if (!newTab) return; // blocked anyway (e.g. user has disabled popups entirely)
+
+    newTab.document.write('<title>Loading…</title><body style="font:1rem sans-serif;padding:2rem;color:#555">Loading OpenHistoricalMap…</body>');
+
     card.classList.add('is-loading');
 
     try {
@@ -202,15 +210,13 @@
       html = html.replace(/<\/head>/i,
         `<link rel="icon" type="image/svg+xml" href="${favicoUri}">\n</head>`);
 
+      // Navigate the already-open tab to the patched page
       const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
-      window.open(URL.createObjectURL(blob), '_blank');
+      newTab.location.href = URL.createObjectURL(blob);
 
     } catch (err) {
       console.warn('Live fetch failed, falling back to static mockup:', err);
-      window.open(
-        `preview.html?icon=${encodeURIComponent(iconPath)}&name=${encodeURIComponent(iconName)}`,
-        '_blank'
-      );
+      newTab.location.href = `preview.html?icon=${encodeURIComponent(iconPath)}&name=${encodeURIComponent(iconName)}`;
     } finally {
       card.classList.remove('is-loading');
     }
