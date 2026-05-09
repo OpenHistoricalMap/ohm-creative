@@ -83,14 +83,19 @@ The **folded map** is OHM's primary shape vocabulary. It reads simultaneously as
 - A shape that suggests depth and layering (historical strata)
 - A document or artifact (archival reference)
 
-Four versions of the silhouette exist:
+Four versions of the silhouette exist (click any to open the file):
+
+<a href="img/01-canonical-silhouette.svg"><img src="img/01-canonical-silhouette.svg" width="120" alt="Canonical silhouette"></a>&nbsp;&nbsp;&nbsp;
+<a href="img/02-organic-silhouette.svg"><img src="img/02-organic-silhouette.svg" width="120" alt="Organic silhouette"></a>&nbsp;&nbsp;&nbsp;
+<a href="img/03-opentrailmap-silhouette.svg"><img src="img/03-opentrailmap-silhouette.svg" width="120" alt="OSM US Soft silhouette"></a>&nbsp;&nbsp;&nbsp;
+<a href="img/04-public-domain-map-silhouette.svg"><img src="img/04-public-domain-map-silhouette.svg" width="120" alt="OSM US Sharp silhouette"></a>
 
 | # | Variant | Character | Source |
 |---|---------|-----------|--------|
 | 1 | [**Canonical**](img/01-canonical-silhouette.svg) | Crisp, precise, 10-vertex polygon | Original, 100×100 viewBox |
 | 2 | [**Organic**](img/02-organic-silhouette.svg) | Hand-feel, gently jittered vertices with bumpy Q-curve edges | v7 exploration, kept as variation |
-| 3 | [**OpenTrailMap**](img/03-opentrailmap-silhouette.svg) | Rounded corners, smoother silhouette | OTM logo outer path, 526×526 |
-| 4 | [**Public Domain Map**](img/04-public-domain-map-silhouette.svg) | Sharp corners, structural | PDM logo outer path, 500×500 |
+| 3 | [**OSM US Soft**](img/03-opentrailmap-silhouette.svg) | Rounded corners, smoother silhouette | OSM US logo outer path, 526×526 |
+| 4 | [**OSM US Sharp**](img/04-public-domain-map-silhouette.svg) | Sharp corners, structural | OSM US logo outer path, 500×500 |
 
 The canonical silhouette is the production default. The organic variant is preserved for
 contexts where a warmer, less clinical feel is appropriate.
