@@ -85,10 +85,20 @@ The **folded map** is OHM's primary shape vocabulary. It reads simultaneously as
 
 Four versions of the silhouette exist (click any to open the file):
 
-<a href="img/01-canonical-silhouette.svg"><img src="img/01-canonical-silhouette.svg" width="120" alt="Canonical silhouette"></a>&nbsp;&nbsp;&nbsp;
-<a href="img/02-organic-silhouette.svg"><img src="img/02-organic-silhouette.svg" width="120" alt="Organic silhouette"></a>&nbsp;&nbsp;&nbsp;
-<a href="img/03-opentrailmap-silhouette.svg"><img src="img/03-opentrailmap-silhouette.svg" width="120" alt="OSM US Soft silhouette"></a>&nbsp;&nbsp;&nbsp;
-<a href="img/04-public-domain-map-silhouette.svg"><img src="img/04-public-domain-map-silhouette.svg" width="120" alt="OSM US Sharp silhouette"></a>
+<table>
+<tr>
+  <td align="center"><a href="img/01-canonical-silhouette.svg"><img src="img/01-canonical-silhouette.svg" width="120" alt="Canonical silhouette"></a></td>
+  <td align="center"><a href="img/02-organic-silhouette.svg"><img src="img/02-organic-silhouette.svg" width="120" alt="Organic silhouette"></a></td>
+  <td align="center"><a href="img/03-opentrailmap-silhouette.svg"><img src="img/03-opentrailmap-silhouette.svg" width="120" alt="OSM US Soft silhouette"></a></td>
+  <td align="center"><a href="img/04-public-domain-map-silhouette.svg"><img src="img/04-public-domain-map-silhouette.svg" width="120" alt="OSM US Sharp silhouette"></a></td>
+</tr>
+<tr>
+  <td align="center">Canonical</td>
+  <td align="center">Organic</td>
+  <td align="center">OSM US Soft</td>
+  <td align="center">OSM US Sharp</td>
+</tr>
+</table>
 
 | # | Variant | Character | Source |
 |---|---------|-----------|--------|
