@@ -1,5 +1,7 @@
 # OpenHistoricalMap — Icon Concepts Design Brief
 
+**[← OHM Logo Refresh Concepts preview gallery](https://openhistoricalmap.github.io/ohm-creative/)**
+
 **Version:** 0.2 (exploration set)  
 **Date:** May 2026  
 **Project:** OpenHistoricalMap (OHM) — [openhistoricalmap.org](https://openhistoricalmap.org)
