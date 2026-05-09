@@ -85,14 +85,12 @@ The **folded map** is OHM's primary shape vocabulary. It reads simultaneously as
 
 Four versions of the silhouette exist:
 
-![Silhouette comparison](img/silhouette-comparison.svg)
-
 | # | Variant | Character | Source |
 |---|---------|-----------|--------|
-| 1 | **Canonical** | Crisp, precise, 10-vertex polygon | Original, 100×100 viewBox |
-| 2 | **Organic** | Hand-feel, gently jittered vertices with bumpy Q-curve edges | v7 exploration, kept as variation |
-| 3 | **OpenTrailMap** | Rounded corners, smoother silhouette | OTM logo outer path, 526×526 |
-| 4 | **Public Domain Map** | Sharp corners, structural | PDM logo outer path, 500×500 |
+| 1 | [**Canonical**](img/01-canonical-silhouette.svg) | Crisp, precise, 10-vertex polygon | Original, 100×100 viewBox |
+| 2 | [**Organic**](img/02-organic-silhouette.svg) | Hand-feel, gently jittered vertices with bumpy Q-curve edges | v7 exploration, kept as variation |
+| 3 | [**OpenTrailMap**](img/03-opentrailmap-silhouette.svg) | Rounded corners, smoother silhouette | OTM logo outer path, 526×526 |
+| 4 | [**Public Domain Map**](img/04-public-domain-map-silhouette.svg) | Sharp corners, structural | PDM logo outer path, 500×500 |
 
 The canonical silhouette is the production default. The organic variant is preserved for
 contexts where a warmer, less clinical feel is appropriate.
@@ -246,36 +244,6 @@ OHM occupies a distinct visual niche: it shares the folded-map form language wit
 but introduces the hourglass / temporal layer that makes its purpose immediately legible. The
 parchment palette reference (rather than OTM's warm yellow-cream) anchors the design in the
 physical world of old documents and archive materials.
-
----
-
-## 10. Files in This Brief
-
-```
-ohm-design-brief/
-├── DESIGN-BRIEF.md             (this document)
-└── img/
-    ├── 00-concept-grid.svg     (all 14 concepts at 128×128)
-    ├── color-palette.svg       (full color swatch grid)
-    ├── silhouette-comparison.svg (4 silhouette variants)
-    ├── 06-simplification.svg
-    ├── 07-negative-space.svg
-    ├── 08-map-hourglass-cutout.svg
-    ├── 09-map-sundial-cutout.svg
-    ├── 10-ohm-concept.svg
-    ├── 13-square-monster.svg
-    ├── 14-curved-monster.svg
-    ├── 15-curved-monster-water.svg
-    ├── simplification-favico.svg
-    ├── favico-h-in-circle.svg      (native 16×16)
-    ├── favico-h-in-circle-magnified.png
-    ├── hourglass-in-globe.svg
-    ├── hourglass-in-otm-silhouette.svg
-    ├── 01-canonical-silhouette.svg
-    ├── 02-organic-silhouette.svg
-    ├── 03-opentrailmap-silhouette.svg
-    └── 04-public-domain-map-silhouette.svg
-```
 
 ---
 
