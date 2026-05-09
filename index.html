@@ -118,32 +118,15 @@
 </header>
 
 <div class="grid-wrapper">
-  <div class="icon-grid" id="grid"></div>
+  <div class="icon-grid" id="grid"><p style="color:#999;grid-column:1/-1;padding:1rem 0">Loading icons…</p></div>
   <p class="hint">Fetches the real OHM site and substitutes your chosen icon as the logo and favicon before opening</p>
 </div>
 
 <script>
-  const icons = [
-    { file: '01-hourglass-globe.svg',        name: 'Hourglass Globe',          num: '01' },
-    { file: '02-hourglass-water-land.svg',   name: 'Hourglass · Water & Land', num: '02' },
-    { file: '03-pyramid-tower.svg',          name: 'Pyramid Tower',            num: '03' },
-    { file: '04-sundial.svg',                name: 'Sundial',                  num: '04' },
-    { file: '05-folded-map.svg',             name: 'Folded Map',               num: '05' },
-    { file: '06-simplification.svg',         name: 'Simplification',           num: '06' },
-    { file: '07-negative-space.svg',         name: 'Negative Space',           num: '07' },
-    { file: '08-map-hourglass-cutout.svg',   name: 'Map · Hourglass Cutout',   num: '08' },
-    { file: '09-map-sundial-cutout.svg',     name: 'Map · Sundial Cutout',     num: '09' },
-    { file: '10-ohm-concept.svg',            name: 'OHM Concept',              num: '10' },
-    { file: '11-ohm-with-border.svg',        name: 'OHM with Border',          num: '11' },
-    { file: '13-square-monster.svg',         name: 'Square Monster',           num: '13' },
-    { file: '14-curved-monster.svg',         name: 'Curved Monster',           num: '14' },
-    { file: '15-curved-monster-water.svg',   name: 'Curved Monster · Water',   num: '15' },
-  ];
-
   const iconDir = 'designs_wip/icons/';
   const OHM_URL = 'https://www.openhistoricalmap.org/';
-  // CORS proxy — returns the raw response body of any URL
   const PROXY   = 'https://api.allorigins.win/raw?url=';
+  const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/icons';
 
   async function openWithIcon(iconPath, iconName, card) {
     card.classList.add('is-loading');
@@ -198,9 +181,18 @@
     }
   }
 
-  const grid = document.getElementById('grid');
+  function parseIcon(filename) {
+    const base = filename.replace(/\.svg$/i, '');
+    const match = base.match(/^(\d+)[^a-z]*(.*)/i);
+    const num  = match ? match[1] : '';
+    const name = (match ? match[2] : base)
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase())
+      .trim();
+    return { file: filename, num, name };
+  }
 
-  icons.forEach(({ file, name, num }) => {
+  function addCard({ file, name, num }) {
     const iconPath = iconDir + file;
     const card = document.createElement('div');
     card.className = 'icon-card';
@@ -212,8 +204,28 @@
       </div>
     `;
     card.addEventListener('click', () => openWithIcon(iconPath, name, card));
-    grid.appendChild(card);
-  });
+    document.getElementById('grid').appendChild(card);
+  }
+
+  async function loadIcons() {
+    const grid = document.getElementById('grid');
+    try {
+      const res = await fetch(GITHUB_API);
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const files = await res.json();
+      const svgs = files
+        .filter(f => f.type === 'file' && f.name.endsWith('.svg') && f.name !== '00-grid.svg')
+        .sort((a, b) => a.name.localeCompare(b.name));
+      if (svgs.length === 0) throw new Error('no SVGs found');
+      grid.innerHTML = '';
+      svgs.forEach(f => addCard(parseIcon(f.name)));
+    } catch (err) {
+      console.warn('GitHub API failed:', err);
+      grid.innerHTML = `<p style="color:#999;grid-column:1/-1">Could not load icon list from GitHub API.</p>`;
+    }
+  }
+
+  loadIcons();
 </script>
 
 </body>
