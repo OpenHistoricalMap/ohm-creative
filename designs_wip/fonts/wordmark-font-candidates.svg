@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 870" width="760" height="870">
+<defs>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Source+Sans+3:wght@500&family=Public+Sans:wght@500&family=IBM+Plex+Sans:wght@500&family=Lato:wght@700&family=Atkinson+Hyperlegible:wght@700&family=Work+Sans:wght@500&family=Alegreya+Sans:wght@500&display=swap');
+.label { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #888; }
+</style>
+</defs>
+<rect width="760" height="870" fill="#fafafa"/>
+<text x="30" y="22" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#222">OHM Wordmark — 8 candidates + OSM baseline</text>
+<rect x="0" y="26" width="760" height="90" fill="#f4ead5"/>
+<text x="30" y="48" class="label">0. OSM baseline (system sans — Helvetica Neue / Segoe UI / Roboto)</text>
+<text x="30" y="86" font-family="-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="108" x2="730" y2="108" stroke="#bbb" stroke-width="1"/>
+<text x="30" y="138" class="label">1. Inter</text>
+<text x="30" y="176" font-family="'Inter', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="198" x2="730" y2="198" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="228" class="label">2. Source Sans 3</text>
+<text x="30" y="266" font-family="'Source Sans 3', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="288" x2="730" y2="288" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="318" class="label">3. Public Sans</text>
+<text x="30" y="356" font-family="'Public Sans', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="378" x2="730" y2="378" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="408" class="label">4. IBM Plex Sans</text>
+<text x="30" y="446" font-family="'IBM Plex Sans', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="468" x2="730" y2="468" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="498" class="label">5. Lato</text>
+<text x="30" y="536" font-family="'Lato', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="558" x2="730" y2="558" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="588" class="label">6. Atkinson Hyperlegible</text>
+<text x="30" y="626" font-family="'Atkinson Hyperlegible', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="648" x2="730" y2="648" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="678" class="label">7. Work Sans</text>
+<text x="30" y="716" font-family="'Work Sans', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+<line x1="30" y1="738" x2="730" y2="738" stroke="#e0e0e0" stroke-width="0.5"/>
+<text x="30" y="768" class="label">8. Alegreya Sans</text>
+<text x="30" y="806" font-family="'Alegreya Sans', -apple-system, sans-serif" font-size="36" font-weight="500" fill="#1a4a52">OpenHistoricalMap</text>
+</svg>
