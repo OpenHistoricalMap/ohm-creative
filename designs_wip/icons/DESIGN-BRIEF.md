@@ -1,4 +1,4 @@
-# OpenHistoricalMap — Icon Design Brief
+# OpenHistoricalMap — Icon Concepts Design Brief
 
 **Version:** 0.2 (exploration set)  
 **Date:** May 2026  
