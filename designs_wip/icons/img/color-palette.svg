@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 436" width="672" height="436">
+<rect width="100%" height="100%" fill="#fafafa"/>
+<text x="12" y="27" font-family="Helvetica, sans-serif" font-size="12" font-weight="600" fill="#555">Primary</text>
+<rect x="12" y="34" width="120" height="72" rx="4" fill="#6b9938"/>
+<text x="20" y="54" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">OHM Green</text>
+<text x="20" y="70" font-family="monospace" font-size="10" fill="#ffffff">#6b9938</text>
+<rect x="144" y="34" width="120" height="72" rx="4" fill="#4f7aaa"/>
+<text x="152" y="54" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">OHM Blue</text>
+<text x="152" y="70" font-family="monospace" font-size="10" fill="#ffffff">#4f7aaa</text>
+<rect x="276" y="34" width="120" height="72" rx="4" fill="#e07a00"/>
+<text x="284" y="54" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">OHM Orange</text>
+<text x="284" y="70" font-family="monospace" font-size="10" fill="#ffffff">#e07a00</text>
+<text x="12" y="133" font-family="Helvetica, sans-serif" font-size="12" font-weight="600" fill="#555">Neutrals</text>
+<rect x="12" y="140" width="120" height="72" rx="4" fill="#1a4a52"/>
+<text x="20" y="160" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Dark Teal</text>
+<text x="20" y="176" font-family="monospace" font-size="10" fill="#ffffff">#1a4a52</text>
+<rect x="144" y="140" width="120" height="72" rx="4" fill="#f4ead5"/>
+<text x="152" y="160" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#222222">Parchment</text>
+<text x="152" y="176" font-family="monospace" font-size="10" fill="#222222">#f4ead5</text>
+<text x="12" y="239" font-family="Helvetica, sans-serif" font-size="12" font-weight="600" fill="#555">Map / Water</text>
+<rect x="12" y="246" width="120" height="72" rx="4" fill="#7a9a44"/>
+<text x="20" y="266" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Olive</text>
+<text x="20" y="282" font-family="monospace" font-size="10" fill="#ffffff">#7a9a44</text>
+<rect x="144" y="246" width="120" height="72" rx="4" fill="#aac2e5"/>
+<text x="152" y="266" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#222222">Water Blue</text>
+<text x="152" y="282" font-family="monospace" font-size="10" fill="#222222">#aac2e5</text>
+<rect x="276" y="246" width="120" height="72" rx="4" fill="#c8d0d0"/>
+<text x="284" y="266" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#222222">Gnomon Gray</text>
+<text x="284" y="282" font-family="monospace" font-size="10" fill="#222222">#c8d0d0</text>
+<text x="12" y="345" font-family="Helvetica, sans-serif" font-size="12" font-weight="600" fill="#555">Accent Palettes</text>
+<rect x="12" y="352" width="120" height="72" rx="4" fill="#c98a3a"/>
+<text x="20" y="372" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#222222">Warm Gold</text>
+<text x="20" y="388" font-family="monospace" font-size="10" fill="#222222">#c98a3a</text>
+<rect x="144" y="352" width="120" height="72" rx="4" fill="#2a3a5e"/>
+<text x="152" y="372" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Indigo</text>
+<text x="152" y="388" font-family="monospace" font-size="10" fill="#ffffff">#2a3a5e</text>
+<rect x="276" y="352" width="120" height="72" rx="4" fill="#2d4a36"/>
+<text x="284" y="372" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Forest</text>
+<text x="284" y="388" font-family="monospace" font-size="10" fill="#ffffff">#2d4a36</text>
+<rect x="408" y="352" width="120" height="72" rx="4" fill="#6b2737"/>
+<text x="416" y="372" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Burgundy</text>
+<text x="416" y="388" font-family="monospace" font-size="10" fill="#ffffff">#6b2737</text>
+<rect x="540" y="352" width="120" height="72" rx="4" fill="#4a5560"/>
+<text x="548" y="372" font-family="Helvetica, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Slate</text>
+<text x="548" y="388" font-family="monospace" font-size="10" fill="#ffffff">#4a5560</text>
+</svg>
