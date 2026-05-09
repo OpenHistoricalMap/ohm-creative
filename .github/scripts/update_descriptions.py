@@ -15,6 +15,10 @@ DESCRIPTIONS_FILE = ICONS_DIR / "DESCRIPTIONS.md"
 SKIP = {"00-grid.svg"}
 
 
+def is_favico(filename: str) -> bool:
+    return filename.endswith("-favico.svg")
+
+
 def parse_descriptions(text: str) -> set[str]:
     """Return the set of filenames that already have an entry."""
     found = set()
@@ -70,7 +74,7 @@ def main() -> int:
     existing_text = DESCRIPTIONS_FILE.read_text() if DESCRIPTIONS_FILE.exists() else ""
     already_described = parse_descriptions(existing_text)
 
-    svgs = sorted(f for f in ICONS_DIR.glob("*.svg") if f.name not in SKIP)
+    svgs = sorted(f for f in ICONS_DIR.glob("*.svg") if f.name not in SKIP and not is_favico(f.name))
     missing = [f for f in svgs if f.name not in already_described]
 
     if not missing:

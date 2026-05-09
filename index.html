@@ -114,6 +114,36 @@
       overflow: hidden;
     }
 
+    .favicon-preview {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding: 0.3rem 0.55rem;
+      background: #f0f2f5;
+      border-radius: 20px;
+      font-size: 0.62rem;
+      color: #aaa;
+    }
+    .favicon-preview img {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .favicon-preview .fav-badge {
+      font-size: 0.58rem;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: #ddeef4;
+      color: #3a8fa8;
+    }
+    .favicon-preview .fav-badge.scaled {
+      background: #ececec;
+      color: #aaa;
+    }
+
     .hint {
       text-align: center;
       font-size: 0.8rem;
@@ -140,50 +170,52 @@
   const PROXY   = 'https://api.allorigins.win/raw?url=';
   const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/icons';
 
-  async function openWithIcon(iconPath, iconName, card) {
+  // iconPath = header logo SVG; favicoPath = browser tab favicon SVG (may differ)
+  async function openWithIcon(iconPath, favicoPath, iconName, card) {
     card.classList.add('is-loading');
 
     try {
-      // Fetch OHM HTML and the selected SVG in parallel
-      const [ohmRes, svgRes] = await Promise.all([
+      const [ohmRes, logoRes, favRes] = await Promise.all([
         fetch(PROXY + encodeURIComponent(OHM_URL)),
         fetch(iconPath),
+        favicoPath !== iconPath ? fetch(favicoPath) : null,
       ]);
 
       if (!ohmRes.ok) throw new Error(`proxy ${ohmRes.status}`);
 
-      let html   = await ohmRes.text();
-      const svg  = await svgRes.text();
+      let html = await ohmRes.text();
 
-      // Encode SVG as a data URI so it works from a blob: origin
-      const dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      const logoSvg  = await logoRes.text();
+      const logoUri  = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(logoSvg);
+
+      const favicoSvg = favRes ? await favRes.text() : logoSvg;
+      const favicoUri = favRes
+        ? 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(favicoSvg)
+        : logoUri;
 
       // 1. Inject <base> so every relative path resolves against OHM's origin
-      html = html.replace(/(<head[^>]*>)/i,
-        `$1\n<base href="${OHM_URL}">`);
+      html = html.replace(/(<head[^>]*>)/i, `$1\n<base href="${OHM_URL}">`);
 
-      // 2. Swap the header logo (matches the hashed asset filename OHM uses)
+      // 2. Swap the header logo
       html = html.replace(
         /(<img\b[^>]*\balt="OpenHistoricalMap logo"[^>]*\bsrc=")[^"]*(")/i,
-        `$1${dataUri}$2`
+        `$1${logoUri}$2`
       );
-      // also cover src-before-alt attribute order
       html = html.replace(
         /(<img\b[^>]*\bsrc=")[^"]*ohm_logo[^"]*(")/i,
-        `$1${dataUri}$2`
+        `$1${logoUri}$2`
       );
 
-      // 3. Replace all favicon / touch-icon links with a single SVG one
+      // 3. Swap favicon with the dedicated favico file (or the logo if none)
       html = html.replace(/<link[^>]+rel=["'](?:icon|shortcut icon|apple-touch-icon)[^>]*>/gi, '');
       html = html.replace(/<\/head>/i,
-        `<link rel="icon" type="image/svg+xml" href="${dataUri}">\n</head>`);
+        `<link rel="icon" type="image/svg+xml" href="${favicoUri}">\n</head>`);
 
       const blob = new Blob([html], { type: 'text/html; charset=utf-8' });
       window.open(URL.createObjectURL(blob), '_blank');
 
     } catch (err) {
       console.warn('Live fetch failed, falling back to static mockup:', err);
-      // Fallback: static OHM mockup with swapped logo
       window.open(
         `preview.html?icon=${encodeURIComponent(iconPath)}&name=${encodeURIComponent(iconName)}`,
         '_blank'
@@ -201,7 +233,7 @@
       .replace(/[-_]+/g, ' ')
       .replace(/\b\w/g, c => c.toUpperCase())
       .trim();
-    return { file: filename, num, name, description: '' };
+    return { file: filename, num, name, description: '', favicoFile: null };
   }
 
   function parseDescriptions(markdown) {
@@ -221,22 +253,26 @@
     return map;
   }
 
-  function addCard({ file, name, num, description }) {
-    const iconPath = iconDir + file;
+  function addCard({ file, name, num, description, favicoFile }) {
+    const iconPath   = iconDir + file;
+    const favicoPath = favicoFile ? iconDir + favicoFile : iconPath;
+    const hasCustomFavico = !!favicoFile;
+
     const card = document.createElement('div');
     card.className = 'icon-card';
-    const descHtml = description
-      ? `<div class="icon-description">${description}</div>`
-      : '';
     card.innerHTML = `
       <img src="${iconPath}" alt="${name}" loading="lazy">
       <div class="icon-label">
         <div class="icon-num">${num}</div>
         ${name}
       </div>
-      ${descHtml}
+      ${description ? `<div class="icon-description">${description}</div>` : ''}
+      <div class="favicon-preview">
+        <img src="${favicoPath}" alt="favicon preview" width="16" height="16">
+        <span class="fav-badge${hasCustomFavico ? '' : ' scaled'}">${hasCustomFavico ? 'favico' : 'scaled'}</span>
+      </div>
     `;
-    card.addEventListener('click', () => openWithIcon(iconPath, name, card));
+    card.addEventListener('click', () => openWithIcon(iconPath, favicoPath, name, card));
     document.getElementById('grid').appendChild(card);
   }
 
@@ -255,8 +291,17 @@
         ? parseDescriptions(await descRes.text())
         : {};
 
+      // Build a set of all filenames for favico lookup
+      const allFiles = new Set(files.filter(f => f.type === 'file').map(f => f.name));
+
+      // Only show primary icon SVGs (exclude favico variants and the grid overview)
       const svgs = files
-        .filter(f => f.type === 'file' && f.name.endsWith('.svg') && f.name !== '00-grid.svg')
+        .filter(f =>
+          f.type === 'file' &&
+          f.name.endsWith('.svg') &&
+          f.name !== '00-grid.svg' &&
+          !f.name.endsWith('-favico.svg')
+        )
         .sort((a, b) => a.name.localeCompare(b.name));
 
       if (svgs.length === 0) throw new Error('no SVGs found');
@@ -269,6 +314,9 @@
           if (meta.name) icon.name = meta.name;
           icon.description = meta.description;
         }
+        // Check for a dedicated favico variant: e.g. 01-hourglass-globe-favico.svg
+        const favicoName = f.name.replace(/\.svg$/i, '-favico.svg');
+        if (allFiles.has(favicoName)) icon.favicoFile = favicoName;
         addCard(icon);
       });
     } catch (err) {
