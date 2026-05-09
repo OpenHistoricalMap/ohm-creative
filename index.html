@@ -17,19 +17,43 @@
     .page-header {
       background: #1b3d4a;
       color: #fff;
-      padding: 3rem 2rem 2.5rem;
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .page-header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+    .page-header-title {
+      flex-grow: 1;
       text-align: center;
     }
-    .page-header h1 {
-      margin: 0 0 0.5rem;
-      font-size: 1.75rem;
+    .page-header-title h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
-    .page-header p {
+    .page-header-title p {
       margin: 0;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: rgba(255,255,255,0.7);
+    }
+    .page-header-actions a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.1s;
+    }
+    .page-header-actions a:hover {
+      background: rgba(255,255,255,0.12);
     }
 
     .grid-wrapper {
@@ -85,7 +109,7 @@
       width: 120px;
       height: 120px;
       object-fit: contain;
-      border-radius: 6px;
+      border-radius: 0;
       display: block;
     }
 
@@ -147,8 +171,17 @@
 <body>
 
 <header class="page-header">
-  <h1>OHM Logo Concepts</h1>
-  <p>Click any icon to preview it live on openhistoricalmap.org</p>
+  <div class="page-header-logo">
+    <img src="https://www.openhistoricalmap.org/assets/ohm_logo-884051b901193cf1d229cb08e81d60ab7b28aea9ba53acad8f141dca78c86430.svg"
+         alt="Current OHM logo">
+  </div>
+  <div class="page-header-title">
+    <h1>OHM Logo Concepts</h1>
+    <p>Click any icon to preview it live on openhistoricalmap.org</p>
+  </div>
+  <div class="page-header-actions">
+    <a href="DESIGN-BRIEF.md">Design Brief</a>
+  </div>
 </header>
 
 <div class="grid-wrapper">
