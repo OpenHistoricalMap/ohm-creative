@@ -340,7 +340,12 @@
           f.name !== '00-grid.svg' &&
           !f.name.endsWith('-favico.svg')
         )
-        .sort((a, b) => a.name.localeCompare(b.name));
+        .sort((a, b) => {
+          const aOsm = a.name.startsWith('osm_us');
+          const bOsm = b.name.startsWith('osm_us');
+          if (aOsm !== bOsm) return aOsm ? -1 : 1;
+          return a.name.localeCompare(b.name);
+        });
 
       if (svgs.length === 0) throw new Error('no SVGs found');
 
