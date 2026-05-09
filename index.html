@@ -114,34 +114,25 @@
       overflow: hidden;
     }
 
-    .favicon-preview {
+    .favicon-tab {
+      align-self: stretch;
+      margin: -1.5rem -1rem 0;
+      padding: 0.4rem 0.75rem;
+      background: #e4e6e8;
+      border-radius: 14px 14px 0 0;
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      margin-top: auto;
-      padding: 0.3rem 0.55rem;
-      background: #f0f2f5;
-      border-radius: 20px;
-      font-size: 0.62rem;
-      color: #aaa;
+      font-size: 0.72rem;
+      color: #555;
+      white-space: nowrap;
+      overflow: hidden;
     }
-    .favicon-preview img {
+    .favicon-tab img {
       width: 16px;
       height: 16px;
       flex-shrink: 0;
       display: block;
-    }
-    .favicon-preview .fav-badge {
-      font-size: 0.58rem;
-      font-weight: 600;
-      padding: 1px 5px;
-      border-radius: 3px;
-      background: #ddeef4;
-      color: #3a8fa8;
-    }
-    .favicon-preview .fav-badge.scaled {
-      background: #ececec;
-      color: #aaa;
     }
 
     .hint {
@@ -261,16 +252,16 @@
     const card = document.createElement('div');
     card.className = 'icon-card';
     card.innerHTML = `
+      <div class="favicon-tab">
+        <img src="${favicoPath}" alt="favicon preview">
+        OpenHistoricalMap
+      </div>
       <img src="${iconPath}" alt="${name}" loading="lazy">
       <div class="icon-label">
         <div class="icon-num">${num}</div>
         ${name}
       </div>
       ${description ? `<div class="icon-description">${description}</div>` : ''}
-      <div class="favicon-preview">
-        <img src="${favicoPath}" alt="favicon preview" width="16" height="16">
-        <span class="fav-badge${hasCustomFavico ? '' : ' scaled'}">${hasCustomFavico ? 'favico' : 'scaled'}</span>
-      </div>
     `;
     card.addEventListener('click', () => openWithIcon(iconPath, favicoPath, name, card));
     document.getElementById('grid').appendChild(card);
