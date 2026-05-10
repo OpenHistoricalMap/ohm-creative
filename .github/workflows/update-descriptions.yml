@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'designs_wip/icons/*.svg'
+  workflow_dispatch:
 
 jobs:
   update-descriptions:
