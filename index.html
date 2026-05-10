@@ -317,9 +317,12 @@
   async function loadIcons() {
     const grid = document.getElementById('grid');
     try {
+      // Cache-bust both fetches so newly pushed icons / descriptions show up
+      // without waiting for the browser, GitHub API (~60s), or CDN (~10min) caches.
+      const cacheBust = `?_=${Date.now()}`;
       const [apiRes, descRes] = await Promise.all([
-        fetch(GITHUB_API),
-        fetch(iconDir + 'DESCRIPTIONS.md').catch(() => null),
+        fetch(GITHUB_API + cacheBust, { cache: 'no-store' }),
+        fetch(iconDir + 'DESCRIPTIONS.md' + cacheBust, { cache: 'no-store' }).catch(() => null),
       ]);
 
       if (!apiRes.ok) throw new Error(`GitHub API ${apiRes.status}`);
