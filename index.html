@@ -314,15 +314,26 @@
     document.getElementById('grid').appendChild(card);
   }
 
+  function parseUserSubmitted(markdown) {
+    // Pull *.svg filenames out of bullet lines, preserving order
+    const list = [];
+    for (const line of markdown.split('\n')) {
+      const m = line.match(/^\s*[-*]\s+`?([^\s`]+\.svg)`?/);
+      if (m) list.push(m[1]);
+    }
+    return list;
+  }
+
   async function loadIcons() {
     const grid = document.getElementById('grid');
     try {
-      // Cache-bust both fetches so newly pushed icons / descriptions show up
+      // Cache-bust fetches so newly pushed icons / metadata show up
       // without waiting for the browser, GitHub API (~60s), or CDN (~10min) caches.
       const cacheBust = `?_=${Date.now()}`;
-      const [apiRes, descRes] = await Promise.all([
+      const [apiRes, descRes, userRes] = await Promise.all([
         fetch(GITHUB_API + cacheBust, { cache: 'no-store' }),
         fetch(iconDir + 'DESCRIPTIONS.md' + cacheBust, { cache: 'no-store' }).catch(() => null),
+        fetch(iconDir + 'USER-SUBMITTED.md' + cacheBust, { cache: 'no-store' }).catch(() => null),
       ]);
 
       if (!apiRes.ok) throw new Error(`GitHub API ${apiRes.status}`);
@@ -332,19 +343,14 @@
         ? parseDescriptions(await descRes.text())
         : {};
 
+      const USER_SUBMITTED = userRes && userRes.ok
+        ? parseUserSubmitted(await userRes.text())
+        : [];
+
       // Build a set of all filenames for favico lookup
       const allFiles = new Set(files.filter(f => f.type === 'file').map(f => f.name));
 
       // Only show primary icon SVGs (exclude favico variants and the grid overview)
-      // Curated user-submitted logos — shown right after osm_us*.svg, in this order
-      const USER_SUBMITTED = [
-        'amillary-sphere.svg',
-        'castle-h.svg',
-        'diptych-time-compass.svg',
-        'ohm-woodblock.svg',
-        'folded-map.svg',
-      ];
-
       // Returns [tier, subOrder] — lower tier sorts first; subOrder breaks ties
       const tierKey = (name) => {
         if (name.startsWith('osm_us')) return [0, 0];
