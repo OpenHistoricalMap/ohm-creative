@@ -9,6 +9,9 @@ into this folder and add its filename to this list.
 - amillary-sphere.svg
 - castle-h.svg
 - castle-h-map.svg
+- citadel-hilbert.svg
+- citadel-hilbert-variation.svg
+- citadel-osm_us-map.svg
 - diptych-time-compass.svg
 - ohm-woodblock.svg
 - folded-map.svg
