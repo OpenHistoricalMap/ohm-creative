@@ -336,6 +336,23 @@
       const allFiles = new Set(files.filter(f => f.type === 'file').map(f => f.name));
 
       // Only show primary icon SVGs (exclude favico variants and the grid overview)
+      // Curated user-submitted logos — shown right after osm_us*.svg, in this order
+      const USER_SUBMITTED = [
+        'amillary-sphere.svg',
+        'castle-h.svg',
+        'diptych-time-compass.svg',
+        'ohm-woodblock.svg',
+        'folded-map.svg',
+      ];
+
+      // Returns [tier, subOrder] — lower tier sorts first; subOrder breaks ties
+      const tierKey = (name) => {
+        if (name.startsWith('osm_us')) return [0, 0];
+        const idx = USER_SUBMITTED.indexOf(name);
+        if (idx >= 0) return [1, idx];
+        return [2, 0];
+      };
+
       const svgs = files
         .filter(f =>
           f.type === 'file' &&
@@ -344,10 +361,11 @@
           !f.name.endsWith('-favico.svg')
         )
         .sort((a, b) => {
-          const aOsm = a.name.startsWith('osm_us');
-          const bOsm = b.name.startsWith('osm_us');
-          if (aOsm !== bOsm) return aOsm ? -1 : 1;
-          return a.name.localeCompare(b.name);
+          const [ta, sa] = tierKey(a.name);
+          const [tb, sb] = tierKey(b.name);
+          if (ta !== tb) return ta - tb;
+          if (ta === 1) return sa - sb;          // preserve user-submitted order
+          return a.name.localeCompare(b.name);   // alphabetical within other tiers
         });
 
       if (svgs.length === 0) throw new Error('no SVGs found');
