@@ -19,6 +19,9 @@ import anthropic
 ICONS_DIR = Path("designs_wip/icons")
 DESCRIPTIONS_FILE = ICONS_DIR / "DESCRIPTIONS.md"
 SKIP = {"00-grid.svg"}
+# Skip Claude call for SVGs larger than this — they blow past the model's
+# input-token limit. Falls back to a filename-derived stub entry instead.
+MAX_SVG_BYTES = 80_000
 
 
 def is_favico(filename: str) -> bool:
@@ -105,10 +108,36 @@ def main() -> int:
 
     # Generate entries for missing SVGs
     missing = sorted(current_svgs - existing_names)
+    added = 0
     for filename in missing:
-        print(f"  Generating entry for {filename}…", flush=True)
         svg_path = ICONS_DIR / filename
-        entry = generate_entry(filename, svg_path.read_text())
+        size = svg_path.stat().st_size
+
+        if size > MAX_SVG_BYTES:
+            print(
+                f"  ⚠  {filename} is {size:,} bytes — too large for Claude. "
+                f"Using filename-based stub."
+            )
+            entry = {
+                "name": filename_stem(filename).title(),
+                "description": (
+                    "Auto-description skipped (SVG exceeds size limit). "
+                    "Please edit this entry manually."
+                ),
+            }
+        else:
+            print(f"  Generating entry for {filename}…", flush=True)
+            try:
+                entry = generate_entry(filename, svg_path.read_text())
+            except Exception as e:
+                print(f"  ⚠  Claude call failed for {filename}: {e}. Using stub.")
+                entry = {
+                    "name": filename_stem(filename).title(),
+                    "description": (
+                        "Auto-description failed. Please edit this entry manually."
+                    ),
+                }
+
         print(f"    name: {entry['name']}")
         print(f"    description: {entry['description']}")
         block = (
@@ -117,6 +146,7 @@ def main() -> int:
             f"description: {entry['description']}"
         )
         entries.append((filename, block))
+        added += 1
 
     if not stale and not missing:
         print("DESCRIPTIONS.md is in sync — nothing to do.")
@@ -125,7 +155,7 @@ def main() -> int:
     new_text = header.rstrip() + "\n\n" + "\n\n".join(b for _, b in entries) + "\n"
     DESCRIPTIONS_FILE.write_text(new_text)
 
-    print(f"\nDESCRIPTIONS.md updated: +{len(missing)} added, -{len(stale)} dropped.")
+    print(f"\nDESCRIPTIONS.md updated: +{added} added, -{len(stale)} dropped.")
     return 0
 
 
