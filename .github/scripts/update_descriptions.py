@@ -1,7 +1,13 @@
 """
-Checks designs_wip/icons/ for SVG files not yet in DESCRIPTIONS.md.
-For each missing file, calls Claude to read the SVG and generate a
-display name and one-sentence description, then appends the entry.
+Keeps designs_wip/icons/DESCRIPTIONS.md in sync with the SVGs in that folder:
+
+- For each SVG present but missing from DESCRIPTIONS.md, calls Claude to read
+  the SVG and generate a display name + one-sentence description, then appends
+  the entry.
+- For each DESCRIPTIONS.md entry whose SVG no longer exists, removes the entry.
+
+Preserves the file header (everything before the first `## ` section) and the
+relative order of all entries that remain valid.
 """
 
 import re
@@ -19,14 +25,24 @@ def is_favico(filename: str) -> bool:
     return filename.endswith("-favico.svg")
 
 
-def parse_descriptions(text: str) -> set[str]:
-    """Return the set of filenames that already have an entry."""
-    found = set()
-    for section in re.split(r"\n## ", text):
-        first_line = section.strip().split("\n")[0].strip()
-        if first_line.endswith(".svg"):
-            found.add(first_line)
-    return found
+def parse_descriptions(text: str) -> tuple[str, list[tuple[str, str]]]:
+    """Split the file into (header, [(filename, raw_block), ...]) preserving order.
+
+    Header is everything before the first `## ` line. Each entry's raw_block is
+    the full text of that section, starting with the `## filename.svg` line.
+    """
+    parts = re.split(r"(?=^## )", text, flags=re.MULTILINE)
+    header = ""
+    entries: list[tuple[str, str]] = []
+    for part in parts:
+        if part.startswith("## "):
+            first_line = part.split("\n", 1)[0]
+            filename = first_line[3:].strip()
+            if filename.endswith(".svg"):
+                entries.append((filename, part.rstrip()))
+        else:
+            header = part
+    return header, entries
 
 
 def filename_stem(filename: str) -> str:
@@ -72,33 +88,44 @@ description: <one sentence>"""
 
 def main() -> int:
     existing_text = DESCRIPTIONS_FILE.read_text() if DESCRIPTIONS_FILE.exists() else ""
-    already_described = parse_descriptions(existing_text)
+    header, entries = parse_descriptions(existing_text)
 
-    svgs = sorted(f for f in ICONS_DIR.glob("*.svg") if f.name not in SKIP and not is_favico(f.name))
-    missing = [f for f in svgs if f.name not in already_described]
+    current_svgs = {
+        f.name for f in ICONS_DIR.glob("*.svg")
+        if f.name not in SKIP and not is_favico(f.name)
+    }
+    existing_names = {filename for filename, _ in entries}
 
-    if not missing:
-        print("All SVGs already have descriptions — nothing to do.")
-        return 0
+    # Drop stale entries (SVG no longer in the folder)
+    stale = existing_names - current_svgs
+    if stale:
+        for s in sorted(stale):
+            print(f"  Dropping stale entry: {s}")
+        entries = [(f, b) for f, b in entries if f not in stale]
 
-    print(f"{len(missing)} SVG(s) need descriptions: {[f.name for f in missing]}")
-
-    new_blocks = []
-    for svg_path in missing:
-        print(f"  Generating entry for {svg_path.name}…", flush=True)
-        entry = generate_entry(svg_path.name, svg_path.read_text())
+    # Generate entries for missing SVGs
+    missing = sorted(current_svgs - existing_names)
+    for filename in missing:
+        print(f"  Generating entry for {filename}…", flush=True)
+        svg_path = ICONS_DIR / filename
+        entry = generate_entry(filename, svg_path.read_text())
         print(f"    name: {entry['name']}")
         print(f"    description: {entry['description']}")
-        new_blocks.append(
-            f"\n## {svg_path.name}\n"
+        block = (
+            f"## {filename}\n"
             f"name: {entry['name']}\n"
-            f"description: {entry['description']}\n"
+            f"description: {entry['description']}"
         )
+        entries.append((filename, block))
 
-    with DESCRIPTIONS_FILE.open("a") as f:
-        f.write("\n" + "".join(new_blocks))
+    if not stale and not missing:
+        print("DESCRIPTIONS.md is in sync — nothing to do.")
+        return 0
 
-    print(f"\nAppended {len(new_blocks)} entry/entries to {DESCRIPTIONS_FILE}.")
+    new_text = header.rstrip() + "\n\n" + "\n\n".join(b for _, b in entries) + "\n"
+    DESCRIPTIONS_FILE.write_text(new_text)
+
+    print(f"\nDESCRIPTIONS.md updated: +{len(missing)} added, -{len(stale)} dropped.")
     return 0
 
 
