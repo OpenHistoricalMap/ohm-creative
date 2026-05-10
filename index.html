@@ -144,6 +144,13 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .icon-description a {
+      color: #3a8fa8;
+      text-decoration: underline;
+    }
+    .icon-description a:hover {
+      color: #1b3d4a;
+    }
 
     .favicon-tab {
       align-self: stretch;
@@ -274,6 +281,28 @@
     return { file: filename, num, name, description: '', favicoFile: null };
   }
 
+  function escapeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // Escape HTML, then convert [text](url) markdown links to anchor tags.
+  // Only safe URL schemes are linked; unsafe ones render as escaped text.
+  function renderDescription(text) {
+    const escaped = escapeHtml(text);
+    return escaped.replace(
+      /\[([^\]]+)\]\(([^)\s]+)\)/g,
+      (match, label, url) => {
+        if (!/^(https?:\/\/|mailto:|\/|#)/i.test(url)) return match;
+        return `<a href="${url}" target="_blank" rel="noopener">${label}</a>`;
+      }
+    );
+  }
+
   function parseDescriptions(markdown) {
     const map = {};
     const sections = markdown.split(/\n## /);
@@ -308,9 +337,13 @@
         <div class="icon-num">${num}</div>
         ${name}
       </div>
-      ${description ? `<div class="icon-description">${description}</div>` : ''}
+      ${description ? `<div class="icon-description">${renderDescription(description)}</div>` : ''}
     `;
-    card.addEventListener('click', () => openWithIcon(iconPath, favicoPath, name, card));
+    card.addEventListener('click', (e) => {
+      // Let links in the description behave like links, not card clicks
+      if (e.target.closest('a')) return;
+      openWithIcon(iconPath, favicoPath, name, card);
+    });
     document.getElementById('grid').appendChild(card);
   }
 
