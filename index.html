@@ -206,8 +206,47 @@
 <script>
   const iconDir = 'designs_wip/icons/';
   const OHM_URL = 'https://www.openhistoricalmap.org/';
-  const PROXY   = 'https://api.allorigins.win/raw?url=';
   const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/icons';
+
+  // CORS proxies tried in order. Public free proxies come and go — keep a chain.
+  // Each entry is a function that maps the target URL into the proxy URL.
+  const PROXIES = [
+    (u) => `https://corsproxy.io/?url=${encodeURIComponent(u)}`,
+    (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+    (u) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+    (u) => `https://thingproxy.freeboard.io/fetch/${u}`,
+  ];
+
+  // Try each proxy in order; return the first response that succeeds.
+  async function fetchViaProxy(url) {
+    let lastErr;
+    for (const buildUrl of PROXIES) {
+      try {
+        const res = await fetch(buildUrl(url));
+        if (res.ok) return res;
+        lastErr = new Error(`proxy ${res.status}`);
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+    throw lastErr || new Error('all proxies failed');
+  }
+
+  function showError(newTab, message) {
+    const safe = String(message).replace(/</g, '&lt;');
+    newTab.document.open();
+    newTab.document.write(`
+      <!doctype html>
+      <title>OHM preview failed</title>
+      <body style="font:1rem -apple-system,sans-serif;padding:2.5rem;color:#333;line-height:1.5;max-width:560px;margin:0 auto">
+        <h1 style="font-size:1.2rem">Couldn't load openhistoricalmap.org</h1>
+        <p>The CORS proxy chain failed. This usually means every public proxy
+        is rate-limited or temporarily down. Try again in a minute.</p>
+        <p style="color:#888;font-size:0.85rem"><strong>Detail:</strong> ${safe}</p>
+        <p><a href="javascript:window.close()">Close tab</a></p>
+      </body>`);
+    newTab.document.close();
+  }
 
   // Open the tab synchronously (before any await) so popup blockers allow it,
   // then navigate it to the patched OHM page once the fetches complete.
@@ -223,12 +262,10 @@
 
     try {
       const [ohmRes, logoRes, favRes] = await Promise.all([
-        fetch(PROXY + encodeURIComponent(OHM_URL)),
+        fetchViaProxy(OHM_URL),
         fetch(iconPath),
         favicoPath !== iconPath ? fetch(favicoPath) : null,
       ]);
-
-      if (!ohmRes.ok) throw new Error(`proxy ${ohmRes.status}`);
 
       let html = await ohmRes.text();
 
@@ -263,8 +300,8 @@
       newTab.location.href = URL.createObjectURL(blob);
 
     } catch (err) {
-      console.warn('Live fetch failed, falling back to static mockup:', err);
-      newTab.location.href = `preview.html?icon=${encodeURIComponent(iconPath)}&name=${encodeURIComponent(iconName)}`;
+      console.warn('CORS-proxy chain failed:', err);
+      showError(newTab, err && err.message || err);
     } finally {
       card.classList.remove('is-loading');
     }
