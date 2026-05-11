@@ -53,18 +53,6 @@ description: Earth as an "O", hourglass as an "H", & a folded map as an "M". Com
 name: OHM with Border
 description: Same as OHM Concept, but with an attempt to divide the visual elements more clearly.
 
-## square-monster.svg
-name: Square Monster
-description: Pixellated sea monster reference. Distinctive & retro.
-
-## curved-monster.svg
-name: Curved Monster
-description: Same as the square sea monster, but fluid and organic.
-
-## curved-monster-water.svg
-name: Curved Monster + Water
-description: Same as the Curved Monster with a representation of the sea.
-
 ## hourglass-in-globe.svg
 name: Hourglass in Globe
 description: Globe + hourglass combo.
@@ -73,3 +61,46 @@ description: Globe + hourglass combo.
 name: OSM US style icon
 description: leverages the OSM US logo map element + the hourglass.
 
+## amillary-sphere.svg
+name: Amillary Sphere
+description: Auto-description skipped (SVG exceeds size limit). Please edit this entry manually.
+
+## castle-h-map.svg
+name: Castle H Map
+description: Dark teal octagonal map border frames cream castle towers and central gatehouse with crenellations on white background.
+
+## castle-h.svg
+name: Castle H Logo
+description: A blue castle silhouette featuring two symmetrical towers with crenellations and a central gatehouse structure.
+
+## citadel-hilbert-variation.svg
+name: Citadel Hilbert Variation
+description: Blue Hilbert curve citadel pattern with gray and white geometric polygons and "H" letterform on navy background.
+
+## citadel-hilbert.svg
+name: Citadel Hilbert
+description: A blue Hilbert curve forms a recursive fortress pattern, with white and outlined polygonal shapes suggesting historical fortification geometry.
+
+## citadel-osm_us-map.svg
+name: Citadel OSM US Map
+description: A deep burgundy geometric fortress-like shape with nested rectangular patterns in black outline on transparent background.
+
+## diptych-time-compass.svg
+name: Diptych Time Compass
+description: A 3D open book with a tilted globe (ocean blue, green continents) on the base and a semi-transparent clock face on the lid, rendered in warm gold with burgundy edges.
+
+## monster-1-square.svg
+name: Monster One Square
+description: Cream-colored square with olive-green vertical and horizontal stripes forming an abstract geometric pattern reminiscent of a stylized creature.
+
+## monster-2-curved.svg
+name: Monster 2 Curved
+description: Green rounded-stroke vertical bars with varied heights on cream background, resembling stylized historical map markers or a waveform pattern.
+
+## monster-3-curved-water.svg
+name: Monster 3 Curved Water
+description: Green curved vertical lines resembling a stylized monster or water waves against a beige background with blue water section.
+
+## ohm-woodblock.svg
+name: OHM Woodblock
+description: Black woodblock-style vector logo featuring bold, textured letterforms with organic edges and layered linework characteristic of traditional printmaking.
