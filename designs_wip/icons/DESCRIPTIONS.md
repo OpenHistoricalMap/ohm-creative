@@ -19,11 +19,11 @@ description: Same as Hourglass Globe, with more explicit land and water.
 
 ## pyramid-tower.svg
 name: Pyramid & Tower
-description: A sandstone pyramid beside a dark medieval tower — two iconic built structures spanning ancient and medieval history in a single silhouette.
+description: A pyramid beside a skyscraper, two structures spanning much of human history.
 
 ## sundial.svg
 name: Sundial
-description: A semicircular dial face in deep burgundy with a triangular gnomon — one of humanity's oldest instruments for reading time from the landscape.
+description: Earth hemisphere and sundial gnomon.
 
 ## folded-map.svg
 name: Folded Map
@@ -79,7 +79,7 @@ description: Citadel pattern combined with a Hilbert curve, which has an H refer
 
 ## citadel-osm_us-map.svg
 name: Citadel OSM US Map
-description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/24). A citadel pattern on an OSM US style map.
+description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/24) & [Colby on Discord](https://discord.com/channels/413070382636072960/634106496560398349/814920149529788436). A citadel pattern on an OSM US style map.
 
 ## diptych-time-compass.svg
 name: Diptych Time Compass
@@ -87,7 +87,7 @@ description: [SForum suggestion by Koreller](https://forum.openhistoricalmap.org
 
 ## monster-1-square.svg
 name: Monster One Square
-description: User-suggested sea monster theme, in a modern retro, squared-off form.
+description: [Suggested by Lemented in Discord](https://discord.com/channels/413070382636072960/634106496560398349/815265746124144670), in a modern retro, squared-off form.
 
 ## monster-2-curved.svg
 name: Monster 2 Curved
@@ -99,7 +99,7 @@ description: Curved sea monster with water.
 
 ## ohm-woodblock.svg
 name: OHM Woodblock
-description: User-provided (on Discord... find author) woodblock logo design.
+description: [Provided by Lemente on Discord](https://discord.com/channels/413070382636072960/634106496560398349/814504899424419890) woodblock logo design.
 
 ## armillary-sphere.svg
 name: Armillary Sphere
