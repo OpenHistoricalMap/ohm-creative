@@ -67,7 +67,7 @@ description: Castle H Logo + OSM US map.
 
 ## castle-h.svg
 name: Castle H Logo
-description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. Concern: similarity to the [World Historical Gazetteer](https://whgazetteer.org) logo.
+description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. Concern: similar to [World Historical Gazetteer](https://whgazetteer.org) logo.
 
 ## citadel-hilbert-variation.svg
 name: Citadel Hilbert Variation
