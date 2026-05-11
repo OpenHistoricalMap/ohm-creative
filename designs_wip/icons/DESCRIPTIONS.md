@@ -67,7 +67,7 @@ description: Castle H Logo + OSM US map.
 
 ## castle-h.svg
 name: Castle H Logo
-description: City gate in the shape of an H for OHM. Concern: similarity to the World Historical Gazetteer (whgazetteer.org) logo.
+description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. Concern: similarity to the [World Historical Gazetteer](https://whgazetteer.org) logo.
 
 ## citadel-hilbert-variation.svg
 name: Citadel Hilbert Variation
@@ -79,11 +79,11 @@ description: Citadel pattern combined with a Hilbert curve, which has an H refer
 
 ## citadel-osm_us-map.svg
 name: Citadel OSM US Map
-description: [Suggested by Koreller in the form](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/24?u=jeffmeyer). A citadel pattern on an OSM US style map.
+description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/24). A citadel pattern on an OSM US style map.
 
 ## diptych-time-compass.svg
 name: Diptych Time Compass
-description: [Suggested by Koreller in the forum](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6?u=jeffmeyer), based on a [medieval compass diptych](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_145_-_Compas_de_navigation.jpg).
+description: [SForum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6), based on a [medieval compass diptych](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_145_-_Compas_de_navigation.jpg).
 
 ## monster-1-square.svg
 name: Monster One Square
@@ -103,4 +103,4 @@ description: User-provided (on Discord... find author) woodblock logo design.
 
 ## armillary-sphere.svg
 name: Armillary Sphere
-description: [Suggested by Koreller in the forum](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6?u=jeffmeyer). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
+description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
