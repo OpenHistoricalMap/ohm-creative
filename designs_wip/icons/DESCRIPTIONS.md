@@ -67,40 +67,50 @@ description: Auto-description skipped (SVG exceeds size limit). Please edit this
 
 ## castle-h-map.svg
 name: Castle H Map
-description: Dark teal octagonal map border frames cream castle towers and central gatehouse with crenellations on white background.
+description: Castle H Logo + OSM US map.
 
 ## castle-h.svg
 name: Castle H Logo
-description: A blue castle silhouette featuring two symmetrical towers with crenellations and a central gatehouse structure.
+description: City gate in the shape of an H for OHM. Concern: similarity to the World Historical Gazetteer (whgazetteer.org) logo.
 
 ## citadel-hilbert-variation.svg
 name: Citadel Hilbert Variation
-description: Blue Hilbert curve citadel pattern with gray and white geometric polygons and "H" letterform on navy background.
+description: Citadel + Hilbert curve logo, adjusted, with an "H" for OHM.
 
 ## citadel-hilbert.svg
 name: Citadel Hilbert
-description: A blue Hilbert curve forms a recursive fortress pattern, with white and outlined polygonal shapes suggesting historical fortification geometry.
+description: Citadel pattern combined with a Hilbert curve, which has an H reference and is a curve famous because it "preserves locality.""
 
 ## citadel-osm_us-map.svg
 name: Citadel OSM US Map
-description: A deep burgundy geometric fortress-like shape with nested rectangular patterns in black outline on transparent background.
+description: [Suggested by Koreller in the form](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/24?u=jeffmeyer). A citadel pattern on an OSM US style map.
 
 ## diptych-time-compass.svg
 name: Diptych Time Compass
-description: A 3D open book with a tilted globe (ocean blue, green continents) on the base and a semi-transparent clock face on the lid, rendered in warm gold with burgundy edges.
+description: [Suggested by Koreller in the forum](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6?u=jeffmeyer), based on a [medieval compass diptych](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_145_-_Compas_de_navigation.jpg).
 
 ## monster-1-square.svg
 name: Monster One Square
-description: Cream-colored square with olive-green vertical and horizontal stripes forming an abstract geometric pattern reminiscent of a stylized creature.
+description: User-suggested sea monster theme, in a modern retro, squared-off form.
 
 ## monster-2-curved.svg
 name: Monster 2 Curved
-description: Green rounded-stroke vertical bars with varied heights on cream background, resembling stylized historical map markers or a waveform pattern.
+description: Same as the other sea monster, but curved.
 
 ## monster-3-curved-water.svg
 name: Monster 3 Curved Water
-description: Green curved vertical lines resembling a stylized monster or water waves against a beige background with blue water section.
+description: Curved sea monster with water.
 
 ## ohm-woodblock.svg
 name: OHM Woodblock
-description: Black woodblock-style vector logo featuring bold, textured letterforms with organic edges and layered linework characteristic of traditional printmaking.
+description: User-provided (on Discord... find author) woodblock logo design.
+
+## armillary-sphere.svg
+name: Armillary Sphere
+description: [Suggested by Koreller in the forum](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6?u=jeffmeyer). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
+
+
+
+
+
+
