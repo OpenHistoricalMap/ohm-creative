@@ -63,11 +63,11 @@ description: leverages the OSM US logo map element + the hourglass.
 
 ## castle-h-map.svg
 name: Castle H Map
-description: Castle H Logo + OSM US map.
+description: Castle H Logo + OSM US map. Concern: similar to [World Historical Gazetteer](https://whgazetteer.org) logo.
 
 ## castle-h.svg
 name: Castle H Logo
-description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. Concern: similar to [World Historical Gazetteer](https://whgazetteer.org) logo.
+description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. 
 
 ## citadel-hilbert-variation.svg
 name: Citadel Hilbert Variation
