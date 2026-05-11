@@ -11,12 +11,12 @@
 ## 1. Project Context
 
 OpenHistoricalMap is an open, collaborative platform for mapping the world as it existed at any
-point in time. It is a sibling project to OpenStreetMap (OSM), sharing its open-data ethos,
-community governance, and technical infrastructure. The OHM icon set must:
+point in time. It is a sibling project to OpenStreetMap (OSM), sharing and extending its open-data ethos,
+community governance, and technical infrastructure. The OHM icon set should:
 
-- Signal a clear family connection to OpenStreetMap
-- Introduce themes of **time, history, and cartography** that distinguish OHM from OSM
-- Scale from 16×16-pixel favicons to print-resolution SVG without loss of legibility
+- Introduce themes of **time, history, cartography, and community** central to OHM
+- Scale from 32x32-pixel to print-resolution SVG without loss of legibility
+- 16x16 favicos may vary from the primary icon visual
 - Feel contemporary but carry subtle visual cues of historical map-making tradition
 
 ---
@@ -32,14 +32,14 @@ Every icon concept should express the idea of **time alongside geography**. Hist
 about WHERE things were and WHEN. The strongest concepts find a way to encode both dimensions
 in a single, simple form.
 
-### 2.3 Favicon First
-All icons are designed to work at 16×16 pixels. A concept that doesn't read at favicon size is
-not viable. Icons were evaluated at every stage across five sizes: 16px, 32px, 100px, 128px,
+### 2.3 Scalability
+All icons are designed to work at 32x32 pixels. A concept that doesn't read at favicon size will
+need to be modified to work. Icons should be review across various sizes: 32px, 64px, 100px, 128px,
 and at 5× nearest-neighbor pixel magnification.
 
 ### 2.4 Open-Source Alignment
 All typefaces, SVG constructions, and derivative silhouettes use open-source or openly-licensed
-source material. The OTM and PDM silhouettes derive from open-licensed logos.
+source material. The OSM US silhouettes derive from open-licensed logos.
 
 ---
 
@@ -76,7 +76,9 @@ Warm Gold `#c98a3a`, Indigo `#2a3a5e`, Forest `#2d4a36`, Burgundy `#6b2737`, Sla
 
 ---
 
-## 4. Map Silhouette Language
+## 4. Design Elements
+
+### 4.1 Map Silhouette Language
 
 The **folded map** is OHM's primary shape vocabulary. It reads simultaneously as:
 - A paper map folded open (cartography)
@@ -111,6 +113,14 @@ The canonical silhouette is the production default. The organic variant is prese
 contexts where a warmer, less clinical feel is appropriate.
 
 ---
+
+### 4.2 Iconography
+
+Hourglass
+
+Citadel
+
+"H" mark
 
 ## 5. Icon Concept Set (v0.2)
 
