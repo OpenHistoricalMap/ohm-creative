@@ -61,10 +61,6 @@ description: Globe + hourglass combo.
 name: OSM US style icon
 description: leverages the OSM US logo map element + the hourglass.
 
-## amillary-sphere.svg
-name: Amillary Sphere
-description: Auto-description skipped (SVG exceeds size limit). Please edit this entry manually.
-
 ## castle-h-map.svg
 name: Castle H Map
 description: Castle H Logo + OSM US map.
@@ -108,9 +104,3 @@ description: User-provided (on Discord... find author) woodblock logo design.
 ## armillary-sphere.svg
 name: Armillary Sphere
 description: [Suggested by Koreller in the forum](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6?u=jeffmeyer). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
-
-
-
-
-
-
