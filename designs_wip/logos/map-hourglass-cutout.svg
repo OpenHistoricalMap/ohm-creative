@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-<rect width="100" height="100" fill="#fafafa"/>
+<path d="M 38 28 L 62 28 L 62 36 Q 62 44 53 50 Q 62 56 62 64 L 62 72 L 38 72 L 38 64 Q 38 56 47 50 Q 38 44 38 36 Z" fill="#fafafa"/>
 <defs>
   <mask id="m8">
     <rect width="100" height="100" fill="white"/>

@@ -86,15 +86,15 @@ name: Diptych Time Compass
 description: [SForum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6), based on a [medieval compass diptych](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_145_-_Compas_de_navigation.jpg).
 
 ## monster-1-square.svg
-name: Monster One Square
+name: Sea Monster Square
 description: [Suggested by Lemented in Discord](https://discord.com/channels/413070382636072960/634106496560398349/815265746124144670), in a modern retro, squared-off form.
 
 ## monster-2-curved.svg
-name: Monster 2 Curved
+name: Sea Monster Curved
 description: Same as the other sea monster, but curved.
 
 ## monster-3-curved-water.svg
-name: Monster 3 Curved Water
+name: Sea Monster Curved + Water
 description: Curved sea monster with water.
 
 ## ohm-woodblock.svg
