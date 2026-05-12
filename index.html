@@ -191,22 +191,22 @@
   </div>
   <div class="page-header-title">
     <h1>OHM Logo Refresh Concepts</h1>
-    <p>Click any icon to preview it live on openhistoricalmap.org</p>
+    <p>Click any logo to preview it live on openhistoricalmap.org</p>
   </div>
   <div class="page-header-actions">
-    <a href="https://github.com/OpenHistoricalMap/ohm-creative/blob/main/designs_wip/icons/DESIGN-BRIEF.md">Design Brief</a>
+    <a href="https://github.com/OpenHistoricalMap/ohm-creative/blob/main/designs_wip/logos/DESIGN-BRIEF.md">Design Brief</a>
   </div>
 </header>
 
 <div class="grid-wrapper">
-  <div class="icon-grid" id="grid"><p style="color:#999;grid-column:1/-1;padding:1rem 0">Loading icons…</p></div>
-  <p class="hint">Fetches the real OHM site and substitutes your chosen icon as the logo and favicon before opening</p>
+  <div class="icon-grid" id="grid"><p style="color:#999;grid-column:1/-1;padding:1rem 0">Loading logos…</p></div>
+  <p class="hint">Fetches the real OHM site and substitutes your chosen logo as the logo and favicon before opening</p>
 </div>
 
 <script>
-  const iconDir = 'designs_wip/icons/';
+  const iconDir = 'designs_wip/logos/';
   const OHM_URL = 'https://www.openhistoricalmap.org/';
-  const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/icons';
+  const GITHUB_API = 'https://api.github.com/repos/OpenHistoricalMap/ohm-creative/contents/designs_wip/logos';
 
   // CORS proxies tried in order. Public free proxies come and go — keep a chain.
   // Each entry is a function that maps the target URL into the proxy URL.
@@ -397,7 +397,7 @@
   async function loadIcons() {
     const grid = document.getElementById('grid');
     try {
-      // Cache-bust fetches so newly pushed icons / metadata show up
+      // Cache-bust fetches so newly pushed logos / metadata show up
       // without waiting for the browser, GitHub API (~60s), or CDN (~10min) caches.
       const cacheBust = `?_=${Date.now()}`;
       const [apiRes, descRes, userRes] = await Promise.all([
@@ -420,7 +420,7 @@
       // Build a set of all filenames for favico lookup
       const allFiles = new Set(files.filter(f => f.type === 'file').map(f => f.name));
 
-      // Only show primary icon SVGs (exclude favico variants and the grid overview)
+      // Only show primary logo SVGs (exclude favico variants and the grid overview)
       // Returns [tier, subOrder] — lower tier sorts first; subOrder breaks ties
       const tierKey = (name) => {
         if (name.startsWith('osm_us')) return [0, 0];
@@ -460,8 +460,8 @@
         addCard(icon);
       });
     } catch (err) {
-      console.warn('Failed to load icons:', err);
-      grid.innerHTML = `<p style="color:#999;grid-column:1/-1">Could not load icon list from GitHub API.</p>`;
+      console.warn('Failed to load logos:', err);
+      grid.innerHTML = `<p style="color:#999;grid-column:1/-1">Could not load logo list from GitHub API.</p>`;
     }
   }
 

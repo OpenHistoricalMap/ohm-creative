@@ -1,4 +1,4 @@
-# OHM Icon Descriptions
+# OHM Logo Concept Descriptions
 
 Names and descriptions for each candidate logo in this folder.
 The gallery page (index.html) fetches this file at load time —
@@ -58,7 +58,7 @@ name: Hourglass in Globe
 description: Globe + hourglass combo.
 
 ## osm_us-style.svg
-name: OSM US style icon
+name: OSM US style logo
 description: leverages the OSM US logo map element + the hourglass.
 
 ## castle-h-map.svg

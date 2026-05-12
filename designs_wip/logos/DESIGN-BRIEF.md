@@ -1,4 +1,4 @@
-# OpenHistoricalMap — Icon Concepts Design Brief
+# OpenHistoricalMap — Logo Concepts Design Brief
 
 **[← OHM Logo Refresh Concepts preview gallery](https://openhistoricalmap.github.io/ohm-creative/)**
 
@@ -12,11 +12,11 @@
 
 OpenHistoricalMap is an open, collaborative platform for mapping the world as it existed at any
 point in time. It is a sibling project to OpenStreetMap (OSM), sharing and extending its open-data ethos,
-community governance, and technical infrastructure. The OHM icon set should:
+community governance, and technical infrastructure. The OHM concept set should:
 
 - Introduce themes of **time, history, cartography, and community** central to OHM
 - Scale from 32x32-pixel to print-resolution SVG without loss of legibility
-- 16x16 favicos may vary from the primary icon visual
+- 16x16 favicos may vary from the primary logo visual
 - Feel contemporary but carry subtle visual cues of historical map-making tradition
 
 ---
@@ -24,17 +24,17 @@ community governance, and technical infrastructure. The OHM icon set should:
 ## 2. Design Principles
 
 ### 2.1 OSM Compatibility
-OHM's UI inherits OSM's system sans-serif font stack. Any wordmark or icon should feel at home
+OHM's UI inherits OSM's system sans-serif font stack. Any wordmark or graphic mark should feel at home
 alongside OSM's visual language — clean, legible, neutral — without being identical to it.
 
 ### 2.2 Temporal Duality
-Every icon concept should express the idea of **time alongside geography**. Historical maps are
+Every logo concept should express the idea of **time alongside geography**. Historical maps are
 about WHERE things were and WHEN. The strongest concepts find a way to encode both dimensions
 in a single, simple form.
 
 ### 2.3 Scalability
-All icons are designed to work at 32x32 pixels. A concept that doesn't read at favicon size will
-need to be modified to work. Icons should be review across various sizes: 32px, 64px, 100px, 128px,
+All logos are designed to work at 32x32 pixels. A concept that doesn't read at favicon size will
+need to be modified to work. Logos should be review across various sizes: 32px, 64px, 100px, 128px,
 and at 5× nearest-neighbor pixel magnification.
 
 ### 2.4 Open-Source Alignment
@@ -122,15 +122,15 @@ Citadel
 
 "H" mark
 
-## 5. Icon Concept Set (v0.2)
+## 5. Logo Concept Set (v0.2)
 
-Fourteen concepts are in the current exploration set. All icons are 100×100 SVG
+Fourteen concepts are in the current exploration set. All logos are 100×100 SVG
 (except curved monster variants, which are 80×80).
 
 ![Concept overview grid](img/00-concept-grid.svg)
 
 ### 5.1 Time-and-Place Concepts (1–4)
-Concepts 1–4 express the passage of time through freestanding icons — no map silhouette context.
+Concepts 1–4 express the passage of time through freestanding logos — no map silhouette context.
 
 | # | Name | Key Idea |
 |---|------|----------|
