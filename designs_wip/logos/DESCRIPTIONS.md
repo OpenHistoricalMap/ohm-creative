@@ -106,5 +106,5 @@ name: Armillary Sphere
 description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
 
 ## osm_us-direct-convert.svg
-name: OpenHistoricalMap Logo
-description: A cream-and-bronze compass rose with central circle and stylized "OHM" monogram in cream against light background.
+name: OSM US-style Logo Conversion 
+description: Direct conversion of current logo into more streamlined form with old-feeling brown tones. 

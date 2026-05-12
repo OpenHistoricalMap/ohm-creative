@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- OHM logo — magnifying glass + hourglass on OSM-US silhouette
-     Treatment: Dark walnut (#6b4520) -->
+     Treatment: Warm tobacco brown (#8b5e2a) -->
 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">
   <defs>
     <style>
       .bg     { fill: #fafbfc; }
-      .fg     { fill: #6b4520; }
-      .ring   { fill: #6b4520; stroke: #f3ead5; stroke-width: 6px; stroke-miterlimit: 10; }
-      .h-out  { fill: #6b4520; stroke: #f3ead5; stroke-width: 12px; stroke-miterlimit: 10; stroke-linecap: round; }
+      .fg     { fill: #8b5e2a; }
+      .ring   { fill: #8b5e2a; stroke: #f3ead5; stroke-width: 6px; stroke-miterlimit: 10; }
+      .h-out  { fill: #8b5e2a; stroke: #f3ead5; stroke-width: 12px; stroke-miterlimit: 10; stroke-linecap: round; }
       .h-in   { fill: #f3ead5; stroke: #f3ead5; stroke-width: 6px; stroke-miterlimit: 10; stroke-linecap: round; }
       .hg     { fill: #f3ead5; }
     </style>
