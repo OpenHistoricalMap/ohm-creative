@@ -1,5 +1,5 @@
 """
-Keeps designs_wip/icons/DESCRIPTIONS.md in sync with the SVGs in that folder:
+Keeps designs_wip/logos/DESCRIPTIONS.md in sync with the SVGs in that folder:
 
 - For each SVG present but missing from DESCRIPTIONS.md, calls Claude to read
   the SVG and generate a display name + one-sentence description, then appends
@@ -16,8 +16,8 @@ from pathlib import Path
 
 import anthropic
 
-ICONS_DIR = Path("designs_wip/icons")
-DESCRIPTIONS_FILE = ICONS_DIR / "DESCRIPTIONS.md"
+LOGOS_DIR = Path("designs_wip/logos")
+DESCRIPTIONS_FILE = LOGOS_DIR / "DESCRIPTIONS.md"
 SKIP = {"00-grid.svg"}
 # Skip Claude call for SVGs larger than this — they blow past the model's
 # input-token limit. Falls back to a filename-derived stub entry instead.
@@ -94,7 +94,7 @@ def main() -> int:
     header, entries = parse_descriptions(existing_text)
 
     current_svgs = {
-        f.name for f in ICONS_DIR.glob("*.svg")
+        f.name for f in LOGOS_DIR.glob("*.svg")
         if f.name not in SKIP and not is_favico(f.name)
     }
     existing_names = {filename for filename, _ in entries}
@@ -110,7 +110,7 @@ def main() -> int:
     missing = sorted(current_svgs - existing_names)
     added = 0
     for filename in missing:
-        svg_path = ICONS_DIR / filename
+        svg_path = LOGOS_DIR / filename
         size = svg_path.stat().st_size
 
         if size > MAX_SVG_BYTES:

@@ -1,10 +1,10 @@
-name: Update icon descriptions
+name: Update logo descriptions
 
 on:
   push:
     branches: [main]
     paths:
-      - 'designs_wip/icons/*.svg'
+      - 'designs_wip/logos/*.svg'
   workflow_dispatch:
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add designs_wip/icons/DESCRIPTIONS.md
+          git add designs_wip/logos/DESCRIPTIONS.md
           git diff --staged --quiet && echo "No changes to commit." || \
-            git commit -m "chore: auto-generate descriptions for new icons [skip ci]" && \
+            git commit -m "chore: auto-generate descriptions for new logos [skip ci]" && \
             git push
