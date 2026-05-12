@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- OHM logo — magnifying glass + hourglass on OSM-US silhouette
-     Treatment: Dark walnut (#6b4520) -->
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 128">
-  <defs>
-    <style>
-      .bg     { fill: #fafbfc; }
-      .fg     { fill: #6b4520; }
-      .ring   { fill: #6b4520; stroke: #f3ead5; stroke-width: 6px; stroke-miterlimit: 10; }
-      .h-out  { fill: #6b4520; stroke: #f3ead5; stroke-width: 12px; stroke-miterlimit: 10; stroke-linecap: round; }
-      .h-in   { fill: #f3ead5; stroke: #f3ead5; stroke-width: 6px; stroke-miterlimit: 10; stroke-linecap: round; }
-      .hg     { fill: #f3ead5; }
-    </style>
-  </defs>
-  <rect class="bg" x="4" y="4" width="120" height="120"/>
-  <path class="fg" d="M8.04,4.2l24.92,9.5,24.92-9.5c.65-.25,1.38-.26,2.04-.03l.08.03,24.94,9.56,24.83-9.56c1.51-.58,3.2.15,3.81,1.64l.03.07,9.97,26.02c.26.68.26,1.44,0,2.12l-9.56,24.96,9.56,24.82c.25.65.26,1.37.04,2.03l-.03.08-9.9,26.22c-.3.79-.93,1.42-1.72,1.72l-26,9.91c-.68.26-1.43.26-2.11,0l-24.94-9.5-24.94,9.5c-.66.25-1.39.26-2.05.02l-.08-.03-25.49-9.93-.06-.02c-1.41-.36-2.56-1.72-2.24-3.39h0s0-.01,0-.01c.04-.27.12-.54.25-.79l.02-.04,9.39-24.66-9.5-24.94c-.25-.65-.26-1.37-.03-2.03l.03-.08,9.5-24.94L4.21,8.03c-.91-2.39,1.44-4.74,3.83-3.83Z"/>
-  <circle class="ring" cx="78" cy="50" r="28"/>
-  <line class="h-out" x1="54" y1="76" x2="24" y2="108"/>
-  <line class="h-in"  x1="26" y1="106" x2="46" y2="84"/>
-  <path class="hg" d="M66.66,32h22.68v6.38c0,4.25-2.36,7.79-7.09,10.62,4.73,2.83,7.09,6.38,7.09,10.62v6.37h-22.68v-6.37c0-4.25,2.36-7.79,7.09-10.62-4.73-2.83-7.09-6.38-7.09-10.62v-6.38Z"/>
+<!-- OHM logo — walnut silhouette, parchment carve-outs, transparent background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Silhouette -->
+  <path fill="#6b4520" d="M8.04,4.2l24.92,9.5,24.92-9.5c.65-.25,1.38-.26,2.04-.03l.08.03,24.94,9.56,24.83-9.56c1.51-.58,3.2.15,3.81,1.64l.03.07,9.97,26.02c.26.68.26,1.44,0,2.12l-9.56,24.96,9.56,24.82c.25.65.26,1.37.04,2.03l-.03.08-9.9,26.22c-.3.79-.93,1.42-1.72,1.72l-26,9.91c-.68.26-1.43.26-2.11,0l-24.94-9.5-24.94,9.5c-.66.25-1.39.26-2.05.02l-.08-.03-25.49-9.93-.06-.02c-1.41-.36-2.56-1.72-2.24-3.39h0s0-.01,0-.01c.04-.27.12-.54.25-.79l.02-.04,9.39-24.66-9.5-24.94c-.25-.65-.26-1.37-.03-2.03l.03-.08,9.5-24.94L4.21,8.03c-.91-2.39,1.44-4.74,3.83-3.83Z"/>
+  <!-- Lens: walnut fill, parchment ring -->
+  <circle cx="78" cy="50" r="28"
+          fill="#6b4520" stroke="#f3ead5" stroke-width="6" stroke-miterlimit="10"/>
+  <!-- Handle: thick parchment line + thinner parchment line -->
+  <line x1="54" y1="76" x2="24" y2="108"
+        fill="#6b4520" stroke="#f3ead5" stroke-width="12" stroke-miterlimit="10" stroke-linecap="round"/>
+  <line x1="26" y1="106" x2="46" y2="84"
+        fill="#f3ead5" stroke="#f3ead5" stroke-width="6" stroke-miterlimit="10" stroke-linecap="round"/>
+  <!-- Hourglass -->
+  <path fill="#f3ead5" d="M66.66,32h22.68v6.38c0,4.25-2.36,7.79-7.09,10.62,4.73,2.83,7.09,6.38,7.09,10.62v6.37h-22.68v-6.37c0-4.25,2.36-7.79,7.09-10.62-4.73-2.83-7.09-6.38-7.09-10.62v-6.38Z"/>
 </svg>
