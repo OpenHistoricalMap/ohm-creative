@@ -67,7 +67,7 @@ description: Castle H Logo + OSM US map. Concern: similar to [World Historical G
 
 ## castle-h.svg
 name: Castle H Logo
-description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM. 
+description: [Forum suggestion by Kovoschiz](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/45) City gate in the shape of an H for OHM.
 
 ## citadel-hilbert-variation.svg
 name: Citadel Hilbert Variation
@@ -104,3 +104,7 @@ description: [Provided by Lemente on Discord](https://discord.com/channels/41307
 ## armillary-sphere.svg
 name: Armillary Sphere
 description: [Forum suggestion by Koreller](https://forum.openhistoricalmap.org/t/designing-a-new-openhistoricalmap-logo/62/6). Created independently in the east and the west in the 3rd & 4th centures BCE, [armillary spheres](https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27histoire_de_Nantes_-_140_-_Sph%C3%A8re_armillaire.jpg) help understand where earth is relative to the stars.
+
+## osm_us-direct-convert.svg
+name: OpenHistoricalMap Logo
+description: A cream-and-bronze compass rose with central circle and stylized "OHM" monogram in cream against light background.
